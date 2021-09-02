@@ -28,3 +28,6 @@ yarn-error.log*
 
 .vercel
 debug.log
+
+#API KEY
+.env

@@ -2,16 +2,17 @@ import { useEffect } from 'react';
 import { fb } from 'service';
 
 export const App = () => {
+
   useEffect(() => {
     fb.firestore
       .collection('chatUsers')
-      .where('userName', '==', 'portexe')
+      .where('userName', '==', 'Sookie')
       .get()
       .then(res => {
-        const users = res.docs[0]?.data();
-        console.log(users);
+        const user = res.docs[0]?.data();
+        console.log(user);
       });
   }, []);
 
-  return <>Hello from PortEXE</>;
+  return <>Hello SOOKIE</>;
 };
