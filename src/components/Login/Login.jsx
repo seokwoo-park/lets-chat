@@ -3,10 +3,29 @@ import { Formik, Form } from 'formik';
 import { defaultValues, validationSchema } from './formikConfig';
 import { useHistory } from 'react-router-dom';
 import { useState } from 'react';
+import { fb } from 'service';
 
 const Login = () => {
   const login = ({ email, password }, { setSubmitting }) => {
-    console.log('Logging In: ', email, password);
+    fb.auth
+      .signInWithEmailAndPassword(email, password)
+      .then(res => {
+        if (!res.user) {
+          setServerError(
+            "We're having problem to log you in. Please try again.",
+          );
+        }
+      })
+      .catch(err => {
+        if (err.code === 'auth/wrong-password') {
+          setServerError('Please check your password.');
+        } else if (err.code === 'auth/user-not-found') {
+          setServerError('No account for this email');
+        } else {
+          setServerError('Something went wrong :( Please Try it later.');
+        }
+      })
+      .finally(setSubmitting(false));
   };
 
   const history = useHistory();
@@ -36,8 +55,8 @@ const Login = () => {
                 Sign Up
               </span>
             </div>
-            <button disabled={isSubmitting || !isValid} type="submit">
-              Sign Up
+            <button disabled={!isValid || isSubmitting} type="submit">
+              Login
             </button>
           </Form>
         )}
