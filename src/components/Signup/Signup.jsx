@@ -21,21 +21,10 @@ const Signup = () => {
               { username: userName, secret: res.user.uid },
               {
                 headers: {
-                  // 'PRIVATE-KEY': 'e937dee4-9f9d-4913-a67d-ab723911e5bc',
                   'PRIVATE-KEY': `${process.env.REACT_APP_CHAT_ENGINE_PRIVATE_KEY}`,
                 },
               },
             )
-            // fetch('/api/createUser', {
-            //   method: 'POST',
-            //   headers: {
-            //     'Content-Type': 'application/json',
-            //   },
-            //   body: JSON.stringify({
-            //     userName,
-            //     userId: res.user.uid,
-            //   }),
-            // })
             .then(() => {
               fb.firestore
                 .collection('chatUsers')
