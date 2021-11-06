@@ -1,8 +1,9 @@
+import { useEffect } from 'react';
+import { ChatProvider } from 'context/ChatContext';
+import 'semantic-ui-css/semantic.min.css';
 import { useAuth, useResolved } from './hooks';
 import { Chat, Login, Singup } from './components';
 import { Switch, Route, useHistory } from 'react-router-dom';
-import { useEffect } from 'react';
-import { ChatProvider } from 'context/ChatContext';
 
 const App = () => {
   const history = useHistory();

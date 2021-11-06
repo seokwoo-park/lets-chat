@@ -234,6 +234,8 @@ code {
 }
 .chat-toolbar {
   display: flex;
+  width: 100%;
+  justify-content: space-between;
   min-height: 50px;
   color: #f2f2f2;
   padding-left: 25px;

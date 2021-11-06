@@ -1,32 +1,35 @@
+import { ChatToolbar, LeftRail } from 'components';
 import { useChat } from 'context/index';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { getChats, ChatEngine } from 'react-chat-engine';
 
 const Chat = () => {
   const { chatConfig, myChats, setMyChats, selectedChat } = useChat();
 
-  useEffect(() => {
-    console.log('myChats:', myChats);
-    console.log('chatConfig:', chatConfig);
-  }, [myChats, chatConfig]);
   return (
     <>
-      {!!chatConfig && (
-        <ChatEngine
-          hideUI={true}
-          userName={chatConfig.userName}
-          projectID={chatConfig.projectID}
-          userSecret={chatConfig.userSecret}
-          onConnect={() => {
-            getChats(chatConfig, setMyChats);
-          }}
-        />
-      )}
+      <LeftRail />
+
+      <div style={{ display: 'none' }}>
+        {!!chatConfig && (
+          <ChatEngine
+            hideUI={true}
+            userName={chatConfig.userName}
+            projectID={chatConfig.projectID}
+            userSecret={chatConfig.userSecret}
+            onConnect={() => {
+              getChats(chatConfig, setMyChats);
+            }}
+          />
+        )}
+      </div>
 
       <div className="chat-container">
         <div className="current-chat">
           {selectedChat ? (
-            <> </>
+            <div className="chatr">
+              <ChatToolbar />
+            </div>
           ) : (
             <div className="no-chat-selected ">
               <img
