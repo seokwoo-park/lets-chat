@@ -5,5 +5,6 @@ export { default as LeftRail } from './LeftRail/LeftRail';
 export { default as ChatList } from './ChatList/ChatList';
 export { default as ChatAvatar } from './ChatAvatar/ChatAvatar';
 export { default as ChatToolbar } from './ChatToolbar/ChatToolbar';
+export { default as SearchUsers } from './SearchUsers/SearchUsers';
 
 export { default as FormField } from './FormField/FormField';

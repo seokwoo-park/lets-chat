@@ -14,8 +14,6 @@ const ChatList = () => {
     deleteChatClick,
   } = useChat();
 
-  console.log(myChats);
-
   return (
     <div className="chat-list">
       {myChats.map((c, index) => (

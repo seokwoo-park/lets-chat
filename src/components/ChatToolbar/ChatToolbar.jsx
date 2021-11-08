@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import { useChat } from 'context/ChatContext';
 import { joinUserNames } from 'helpers/joinUserNames';
 import { Icon } from 'semantic-ui-react';
+import { SearchUsers } from 'components';
 
 const ChatToolbar = () => {
   const { selectedChat, chatConfig } = useChat();
   const [searching, setSearching] = useState(false);
-
-  console.log(selectedChat);
 
   return (
     <>
@@ -27,7 +26,7 @@ const ChatToolbar = () => {
         </div>
       </div>
 
-      {!!searching && <h1>SEARCHING!!</h1>}
+      <SearchUsers visible={searching} closeFn={() => setSearching(false)} />
     </>
   );
 };
